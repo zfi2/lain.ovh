@@ -1,0 +1,213 @@
+@font-face { font-family: azuki_font; src: url('../other/azuki.woff2') } 
+
+:root {
+    --primary-color: red;
+    --secondary-color: white;
+    --background-color: #000;
+    --overlay-opacity: 0.8;
+    --console-color: #72ecf0;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    font-family: 'azuki_font', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding-bottom: 300px;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin: 0 20px;
+    text-align: center;
+    display: block;
+    font-size: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.middle-banner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.im-still-searching-for-you {
+    font-size: 1em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--secondary-color);
+    padding: 10px 0;
+    z-index: 1003;
+    opacity: 0.01;
+    pointer-events: none;
+}
+
+.social-links {
+    position: fixed;
+    text-align: center;
+    z-index: 998;
+    font-size: 1.3em;
+    letter-spacing: 0.2em;
+    width: auto;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-links a {
+    margin: 10px 0;
+    color: var(--secondary-color);
+    text-decoration: none;
+    text-shadow: 0 0 5px rgba(216, 5, 5, 0.7);
+    transition: text-shadow 0.3s ease;
+}
+
+.social-links a:hover {
+    text-shadow: 0 0 10px rgb(216, 46, 46);
+}
+
+.console {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--console-color);
+    background-color: #000;
+    padding: 40px 20px 20px;
+    border: 2px solid #c0c0c0;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 2px #ffffff,
+                0 0 0 2px #808080,
+                2px 2px 5px rgba(0, 0, 0, 0.5);
+    width: 600px;
+    height: 400px;
+    margin: auto;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.console::before {
+    content: "===== [ Console ] =====";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to right, #4b6983, #7b8ea3);
+    color: #000;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.console::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    width: 14px;
+    height: 14px;
+    background-color: #c0c0c0;
+    border: 1px solid #808080;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #404040;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: var(--console-color);
+    animation: blink 1s step-start infinite;
+}
+
+.blocking-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    opacity: 1;
+}
+
+.song-title {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    color: #d792ff18;
+    padding: 10px 0;
+    font-family: 'azuki_font', sans-serif;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.song-title span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fluctuate-opacity {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 0.1; }
+}
+
+@keyframes hue-rotate {
+    0% {
+        filter: hue-rotate(0deg) saturate(125%) brightness(75%);
+    }
+    100% {
+        filter: hue-rotate(360deg) saturate(125%) brightness(75%);
+    }
+}

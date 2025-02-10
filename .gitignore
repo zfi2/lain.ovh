@@ -1,0 +1,7 @@
+package.json
+package-lock.json
+minify.js
+js/comments.js
+js/script.js
+node_modules/*
+offline-website
