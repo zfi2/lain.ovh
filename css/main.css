@@ -1,0 +1,135 @@
+:root {
+    --main-white: #f8f8ff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    margin: 0;
+    background: var(--main-white);
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #666;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+    gap: 1.5rem;
+}
+
+.link-item {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-item {
+    color: #888;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+.link-item:hover {
+    color: #fd8ec6;
+    text-shadow: 0 0 15px rgb(255, 172, 213, 0.8);
+    animation: text-glow-flicker 1.5s ease-in-out infinite;
+}
+
+.separator {
+    color: rgba(200, 200, 200, 0.7);
+    font-weight: 300;
+    margin: 0 0.5rem;
+    user-select: none;
+}
+
+.separator:hover {
+    transform: none !important;
+    background: transparent !important;
+}
+
+#visualizer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 0;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#song-title {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 1rem; 
+    color: #888;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 2;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+#copy-notification {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); 
+    color: #666;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);  
+    z-index: 1000;
+    border: 1px solid rgba(200, 200, 200, 0.2);
+    pointer-events: none; 
+}
+
+#copy-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); 
+}
+
+@keyframes text-glow-flicker {
+    0%, 100% { 
+        opacity: 0.6;
+        transform: translateY(0);
+        text-shadow: 0 0 10px rgb(255, 172, 213, 0.8);
+    }
+    50% { 
+        opacity: 1;
+        transform: translateY(-2px);
+        text-shadow: 0 0 20px rgb(255, 172, 213, 0.8);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
